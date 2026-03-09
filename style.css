@@ -5,8 +5,10 @@
     --surface-highlight: #262626;
     --text-primary: #f0f0f0;
     --text-secondary: #999999;
-    --accent: #d4af37; /* A subtle gold/bronze for "creative spark" */
+    --accent: #d4af37;
+    /* A subtle gold/bronze for "creative spark" */
     --success: #4caf50;
+    --error: #ff5252;
     --border-radius: 12px;
     --transition-fast: 0.2s ease;
     --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -28,34 +30,85 @@ body {
 }
 
 .app-container {
-    max-width: 600px; /* Constrain for larger screens, fills mobile */
+    max-width: 600px;
+    /* Constrain for larger screens, fills mobile */
     margin: 0 auto;
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    padding-bottom: 80px; /* Space for progress bar */
+    padding-bottom: 80px;
+    /* Space for progress bar */
 }
 
 /* Typography & Header */
-.header {
-    padding: 32px 24px 24px;
+.top-nav {
+    padding: 24px 24px 16px;
     text-align: center;
+    background-color: var(--bg-color);
+    z-index: 10;
 }
 
 h1 {
     font-weight: 300;
-    font-size: 2.5rem;
+    font-size: 2rem;
     letter-spacing: 2px;
-    margin-bottom: 8px;
+    margin-bottom: 16px;
     text-transform: uppercase;
+}
+
+.nav-toggles {
+    display: flex;
+    background-color: var(--surface-color);
+    border-radius: 20px;
+    padding: 4px;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    border: 1px solid #333;
+}
+
+.nav-btn {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    padding: 10px 0;
+    border-radius: 16px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.nav-btn.active {
+    background-color: var(--surface-highlight);
+    color: var(--text-primary);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.header {
+    padding: 0 24px 16px;
+    text-align: center;
 }
 
 .header p {
     color: var(--text-secondary);
-    font-size: 0.95rem;
+    font-size: 0.90rem;
     line-height: 1.5;
     max-width: 280px;
     margin: 0 auto;
+}
+
+/* View Containers */
+.view-container {
+    flex: 1;
+    display: none;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.view-container.active-view {
+    display: flex;
 }
 
 /* Grid Layout */
@@ -73,10 +126,9 @@ h1 {
     overflow: hidden;
     background-color: var(--surface-color);
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-    /* Solid borders instead of glassmorphism */
-    border: 1px solid #333; 
+    border: 1px solid #333;
 }
 
 .fragment-card:active {
@@ -87,13 +139,13 @@ h1 {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: grayscale(80%) contrast(1.2); /* Make them look hidden/mysterious initially */
+    filter: grayscale(80%) contrast(1.2);
     transition: filter var(--transition-smooth);
 }
 
 /* Found State */
 .fragment-card.found .fragment-image {
-    filter: grayscale(0%) contrast(1); /* Reveal original colors */
+    filter: grayscale(0%) contrast(1);
 }
 
 .fragment-card.found::after {
@@ -111,7 +163,66 @@ h1 {
     border-radius: 50%;
     font-size: 14px;
     font-weight: bold;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Map Layout */
+#leaflet-map {
+    width: 100%;
+    flex: 1;
+    background-color: #111;
+    z-index: 1;
+    /* Keep below overlays */
+}
+
+/* Custom Marker CSS */
+.custom-div-icon {
+    background: transparent;
+    border: none;
+}
+
+.marker-pin {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--surface-color);
+    border: 3px solid #555;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    transition: transform var(--transition-fast);
+}
+
+.marker-pin.found-pin {
+    background-color: var(--accent);
+    border-color: #fff;
+    box-shadow: 0 0 15px var(--accent);
+}
+
+.custom-div-icon:active .marker-pin {
+    transform: scale(1.2);
+}
+
+.user-location-marker {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #4285F4;
+    border: 3px solid #fff;
+    box-shadow: 0 0 15px rgba(66, 133, 244, 0.8);
+    animation: pulse-blue 2s infinite;
+}
+
+@keyframes pulse-blue {
+    0% {
+        box-shadow: 0 0 0 0 rgba(66, 133, 244, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 15px rgba(66, 133, 244, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(66, 133, 244, 0);
+    }
 }
 
 /* Modal */
@@ -178,7 +289,7 @@ h1 {
 
 .modal-actions {
     background-color: var(--surface-color);
-    padding: 32px 24px 48px;
+    padding: 24px 24px 48px;
     border-top: 1px solid #333;
     text-align: center;
 }
@@ -186,16 +297,29 @@ h1 {
 #modal-title {
     font-weight: 600;
     font-size: 1.5rem;
+    margin-bottom: 4px;
+}
+
+.modal-distance {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--error);
     margin-bottom: 8px;
+}
+
+.modal-distance.valid {
+    color: var(--success);
 }
 
 .modal-instruction {
     color: var(--text-secondary);
     margin-bottom: 24px;
+    font-size: 0.9rem;
 }
 
 /* Buttons */
-.capture-btn, .continue-btn {
+.capture-btn,
+.continue-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -209,10 +333,17 @@ h1 {
     max-width: 300px;
     cursor: pointer;
     border: none;
-    transition: opacity var(--transition-fast), transform var(--transition-fast);
+    transition: all var(--transition-fast);
 }
 
-.capture-btn:active, .continue-btn:active {
+.capture-btn.disabled {
+    background-color: #333;
+    color: #777;
+    cursor: not-allowed;
+}
+
+.capture-btn:not(.disabled):active,
+.continue-btn:active {
     transform: scale(0.98);
 }
 
@@ -222,7 +353,7 @@ h1 {
 }
 
 .hidden-input {
-    display: none; /* Hide the actual file input */
+    display: none;
 }
 
 /* Progress Bar */
@@ -232,7 +363,7 @@ h1 {
     left: 0;
     width: 100%;
     background-color: var(--bg-color);
-    padding: 16px 24px 24px;
+    padding: 16px 24px 20px;
     border-top: 1px solid #222;
     z-index: 50;
 }
@@ -265,8 +396,24 @@ h1 {
     transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Overlays (Scanning / Success) */
-.scanning-overlay, .success-overlay {
+.debug-panel {
+    margin-top: 12px;
+    text-align: right;
+}
+
+.debug-panel label {
+    font-size: 10px;
+    color: #666;
+    background: #222;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Overlays (Scanning / Success / Error) */
+.scanning-overlay,
+.success-overlay,
+.error-overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -281,7 +428,9 @@ h1 {
     transition: opacity var(--transition-fast);
 }
 
-.scanning-overlay.hidden, .success-overlay.hidden {
+.scanning-overlay.hidden,
+.success-overlay.hidden,
+.error-overlay.hidden {
     opacity: 0;
     pointer-events: none;
 }
@@ -296,8 +445,13 @@ h1 {
 }
 
 @keyframes scan {
-    0% { transform: translateY(-50px); }
-    100% { transform: translateY(50px); }
+    0% {
+        transform: translateY(-50px);
+    }
+
+    100% {
+        transform: translateY(50px);
+    }
 }
 
 .scanning-text {
@@ -305,26 +459,43 @@ h1 {
     color: var(--accent);
     letter-spacing: 2px;
     animation: pulse 1s infinite alternate;
+    text-align: center;
+    padding: 0 20px;
 }
 
 @keyframes pulse {
-    0% { opacity: 0.5; }
-    100% { opacity: 1; }
+    0% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.success-icon,
+.error-icon {
+    font-size: 4rem;
+    margin-bottom: 16px;
 }
 
 .success-icon {
-    font-size: 4rem;
-    color: var(--accent);
-    margin-bottom: 16px;
+    color: var(--success);
+}
+
+.error-icon {
+    color: var(--error);
 }
 
 .success-text {
     font-size: 2rem;
     font-weight: 600;
     margin-bottom: 8px;
+    text-align: center;
 }
 
-.success-overlay p {
+.success-overlay p,
+.error-overlay p {
     color: var(--text-secondary);
     margin-bottom: 32px;
     text-align: center;

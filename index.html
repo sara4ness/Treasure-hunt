@@ -1,28 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Imprints | Scavenger Hunt</title>
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Leaflet CSS for Maps -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="app-container">
-        <!-- Header -->
-        <header class="header">
-            <h1>Imprints</h1>
-            <p>Find the hidden creativity embedded in Tottenham Court Road. Tap a fragment to begin.</p>
-        </header>
 
-        <!-- Main Grid -->
-        <main class="grid-container" id="fragment-grid">
-            <!-- Fragments will be injected here by app.js -->
+        <!-- Toggle map/grid -->
+        <nav class="top-nav">
+            <h1>Imprints</h1>
+            <div class="nav-toggles">
+                <button id="btn-grid" class="nav-btn active">Gallery</button>
+                <button id="btn-map" class="nav-btn">Map</button>
+            </div>
+        </nav>
+
+        <!-- Main Gallery Grid View -->
+        <main class="view-container active-view" id="view-grid">
+            <header class="header">
+                <p>Find the hidden creativity embedded in Tottenham Court Road. Use the map to locate a fragment, then
+                    capture it here.</p>
+            </header>
+            <div class="grid-container" id="fragment-grid">
+                <!-- Fragments injected via JS -->
+            </div>
         </main>
 
-        <!-- Fullscreen Modal for Capture -->
+        <!-- Map View -->
+        <main class="view-container" id="view-map">
+            <div id="leaflet-map"></div>
+        </main>
+
+        <!-- Capture Modal -->
         <div class="modal hidden" id="capture-modal">
             <div class="modal-content">
                 <button class="close-btn" id="close-modal">&times;</button>
@@ -31,21 +56,25 @@
                 </div>
                 <div class="modal-actions">
                     <h2 id="modal-title">Fragment #01</h2>
-                    <p class="modal-instruction">Find this texture in the real world.</p>
-                    
-                    <label class="capture-btn" for="camera-input">
-                        <span class="icon">&#128247;</span> Capture Imprint
+                    <p class="modal-distance" id="modal-distance">Distance: Checking Location...</p>
+                    <p class="modal-instruction" id="modal-instruction">Navigate closer to the fragment's location to
+                        unlock capture mode.</p>
+
+                    <label class="capture-btn disabled" id="capture-label" for="camera-input">
+                        <span class="icon" id="capture-icon">&#128247;</span> <span id="capture-text">Too Far
+                            Away</span>
                     </label>
-                    <input type="file" id="camera-input" accept="image/*" capture="environment" class="hidden-input">
+                    <input type="file" id="camera-input" accept="image/*" capture="environment" class="hidden-input"
+                        disabled>
                 </div>
             </div>
-            
+
             <!-- Scanning Overlay -->
             <div class="scanning-overlay hidden" id="scanning-overlay">
                 <div class="scanner-line"></div>
-                <div class="scanning-text">Analyzing Imprint...</div>
+                <div class="scanning-text">Analyzing Imprint & Location...</div>
             </div>
-            
+
             <!-- Success Overlay -->
             <div class="success-overlay hidden" id="success-overlay">
                 <div class="success-icon">&#10003;</div>
@@ -53,8 +82,16 @@
                 <p>You have uncovered a layer of the city's creativity.</p>
                 <button class="continue-btn" id="continue-btn">Continue Hunting</button>
             </div>
+
+            <!-- Error Overlay -->
+            <div class="error-overlay hidden" id="error-overlay">
+                <div class="error-icon">&#10007;</div>
+                <div class="success-text" style="color:#ff5252;">Validation Failed</div>
+                <p id="error-message">You are not close enough to this imprint's location. Keep looking!</p>
+                <button class="continue-btn" id="error-btn" style="background-color:#ff5252;">Try Again</button>
+            </div>
         </div>
-        
+
         <!-- Progress Bar -->
         <div class="progress-bar-container">
             <div class="progress-stats">
@@ -64,9 +101,21 @@
             <div class="progress-track">
                 <div class="progress-fill" id="progress-fill"></div>
             </div>
+
+            <!-- DEBUG TOGGLE (Remove before production) -->
+            <div class="debug-panel">
+                <label>
+                    <input type="checkbox" id="debug-location" checked> Debug: Ignore GPS Distance
+                </label>
+            </div>
         </div>
     </div>
 
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <!-- Custom JS -->
     <script src="app.js"></script>
 </body>
+
 </html>
