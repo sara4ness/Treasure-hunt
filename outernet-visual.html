@@ -159,11 +159,14 @@
             doubleClickZoom: false
         }).setView([centerLat, centerLng], 17); // Zoomed in close to Outernet
 
-        // Tile Layers
-        const lightModeUrl = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
-        const darkModeUrl = 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
+        // Tile Layers (High Contrast Stamen Toner via Stadia)
+        const lightModeUrl = 'https://tiles.stadiamaps.com/tiles/stamen_toner/{z}/{x}/{y}{r}.png';
+        const darkModeUrl = 'https://tiles.stadiamaps.com/tiles/stamen_toner_background/{z}/{x}/{y}{r}.png'; // Using background variant for dark toggle
 
-        let currentLayer = L.tileLayer(lightModeUrl, { maxZoom: 20 }).addTo(map);
+        // Add Stadia Maps attribution
+        const stamenAttribution = '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://stamen.com/">Stamen Design</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors';
+
+        let currentLayer = L.tileLayer(lightModeUrl, { maxZoom: 20, attribution: stamenAttribution }).addTo(map);
         let isDarkMode = false;
         let pointsVisible = true;
 
