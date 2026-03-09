@@ -102,8 +102,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Center on Outernet / Denmark St
         map = L.map('leaflet-map').setView([centerLat, centerLng], 16);
 
-        // Dark mode map tiles (CartoDB Dark Matter)
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        // Light mode map tiles (CartoDB Positron)
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
             attribution: '&copy; <a href="https://carto.com/attributions">CARTO</a>',
             subdomains: 'abcd',
             maxZoom: 20
