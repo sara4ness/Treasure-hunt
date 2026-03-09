@@ -34,9 +34,9 @@
             z-index: 1;
         }
 
-        /* Make the map grayscale, slightly darker, and add a bit of contrast without affecting our custom colored icons */
+        /* Removed high-contrast filters to match the clean look of the app */
         .leaflet-tile-pane {
-            filter: grayscale(100%) contrast(110%) brightness(0.9);
+            filter: none;
         }
 
         /* Controls Overlay for the person operating the screen */
@@ -91,14 +91,14 @@
         }
 
         .marker-pin {
-            width: 24px;
-            height: 24px;
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
             /* Solid white matching the map by default */
             background-color: #ffffff;
-            /* Black ring for high contrast */
-            border: 3px solid #000;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            /* Subtler gray ring to match the app */
+            border: 3px solid #1a1a1a;
+            /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.8); */
             transition: opacity 0.5s ease, transform 0.5s ease;
             opacity: 0;
             transform: scale(0.5);
@@ -140,7 +140,7 @@
         const randomOffset = () => (Math.random() - 0.5) * 0.004;
 
         // Define Custom Colors Here!
-        const dotColor = '#888888'; // Uniform gray for all dots
+        const dotColor = '#242424'; // Uniform gray for all dots
         const customColors = Array(15).fill(dotColor);
 
         // Specific coordinates matching the app
@@ -217,7 +217,7 @@
             // Adjust marker colors based on theme
             const pins = document.querySelectorAll('.marker-pin');
             pins.forEach(pin => {
-                pin.style.borderColor = isDarkMode ? '#fff' : '#000';
+                pin.style.borderColor = isDarkMode ? '#fff' : '#555';
             });
         });
 
