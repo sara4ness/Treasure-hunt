@@ -18,22 +18,22 @@
     <div class="app-container">
 
         <!-- Toggle map/grid -->
-        <nav class="top-nav">
+        <nav class="top-nav" role="navigation" aria-label="Main Navigation">
             <div class="logo-container">
-                <img src="images/IMPRINTS Logo.svg" alt="Imprints Project" class="main-logo">
+                <img src="images/IMPRINTS Logo.svg" alt="Imprints Project Logo" class="main-logo">
             </div>
-            <div class="nav-toggles">
-                <button id="btn-grid" class="nav-btn active">Gallery</button>
-                <button id="btn-map" class="nav-btn">Map</button>
+            <div class="nav-toggles" role="group" aria-label="View Switcher">
+                <button id="btn-grid" class="nav-btn active" aria-pressed="true">Gallery</button>
+                <button id="btn-map" class="nav-btn" aria-pressed="false">Map</button>
             </div>
         </nav>
 
         <!-- Main Gallery Grid View -->
-        <main class="view-container active-view" id="view-grid">
+        <main class="view-container active-view" id="view-grid" role="main">
             <header class="header">
                 <p>Ready to hunt? Find the playful layers of creativity hidden around the Outernet! Use the map to track down a fragment, then capture its vibe.</p>
             </header>
-            <div class="grid-container" id="fragment-grid">
+            <div class="grid-container" id="fragment-grid" aria-label="Fragment Gallery">
                 <!-- Fragments injected via JS -->
             </div>
         </main>
@@ -90,15 +90,13 @@
         </div>
 
         <!-- Progress Bar -->
-        <div class="progress-bar-container">
+        <div class="progress-bar-container" role="progressbar" aria-label="Discovery Progress" aria-valuemin="0" aria-valuemax="40" id="progress-container">
             <div class="progress-stats">
                 <span>Fragments Found</span>
-                <span id="progress-text">0 / 15</span>
+                <span id="progress-text" aria-live="polite">0 / 40</span>
             </div>
             <div class="progress-track">
                 <div class="progress-fill" id="progress-fill"></div>
-            </div>
-
             </div>
         </div>
     </div>

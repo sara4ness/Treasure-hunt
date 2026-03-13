@@ -12,21 +12,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Array of the images
     const fragments = [
-        { id: 1, src: 'images/IMG_2203.jpg', clue: 'Look closely at the layered brickwork.', lat: 51.51532, lng: -0.12946 },
-        { id: 2, src: 'images/IMG_2208.jpg', clue: 'Weathered words painted on stone.', lat: 51.51506, lng: -0.12881 },
-        { id: 3, src: 'images/IMG_3187.jpg', clue: 'A bold slash of colorful paint.', lat: 51.51455, lng: -0.12965 },
-        { id: 4, src: 'images/IMG_2224.jpg', clue: 'Distressed posters overlapping in time.', lat: 51.51576, lng: -0.13055 },
-        { id: 5, src: 'images/IMG_2239 2.jpg', clue: 'A hidden mark in the alleyway.', lat: 51.51578, lng: -0.13029 },
-        { id: 6, src: 'images/IMG_2240 2.jpg', clue: 'A small tag on a rusted surface.', lat: centerLat + randomOffset(), lng: centerLng + randomOffset() }, // Missing coords, using random
-        { id: 7, src: 'images/IMG_2241 2.jpg', clue: 'Remnants of old Denmark Street.', lat: centerLat + randomOffset(), lng: centerLng + randomOffset() }, // Missing coords, using random
-        { id: 8, src: 'images/IMG_2242 2.jpg', clue: 'A textured architectural detail.', lat: centerLat + randomOffset(), lng: centerLng + randomOffset() }, // Missing coords, using random
-        { id: 9, src: 'images/IMG_3168.jpg', clue: 'Stickers layered on a lamppost.', lat: 51.51506, lng: -0.12881 },
-        { id: 10, src: 'images/IMG_3187.jpg', clue: 'A bold slash of colorful paint.', lat: 51.51455, lng: -0.12965 },
-        { id: 12, src: 'images/IMG_3221.jpg', clue: 'A peeling advertisement.', lat: 51.51565, lng: -0.13380 },
-        { id: 13, src: 'images/IMG_3223.jpg', clue: 'A mysterious stencil.', lat: 51.51565, lng: -0.13380 },
-        { id: 14, src: 'images/IMG_3228.jpg', clue: 'An intricate pattern etched in cement.', lat: 51.51572, lng: -0.13384 },
-        { id: 15, src: 'images/IMG_3239 2.jpg', clue: 'A macro shot of weathered wood.', lat: 51.51635, lng: -0.13056 },
-        { id: 16, src: 'images/IMG_3201.jpg', clue: 'A final piece of the urban puzzle.', lat: 51.51563, lng: -0.13099 }
+        { id: 1, src: 'images/New images/24B35117-4845-49F9-82AD-8A758E7C5540_1_105_c.JPEG', clue: 'Seek the contrast in this urban layer.', lat: centerLat + randomOffset(), lng: centerLng + randomOffset() },
+        { id: 2, src: 'images/New images/27E24677-CD6C-4607-841D-88348D7D43F7_1_105_c.jpg', clue: 'A faded fragment of the past.', lat: centerLat + randomOffset(), lng: centerLng + randomOffset() },
+        { id: 3, src: 'images/New images/3D962933-3591-4B47-B57F-1A9BFC2788FA_1_105_c copy.JPG', clue: 'Look for overlapping textures.', lat: centerLat + randomOffset(), lng: centerLng + randomOffset() },
+        { id: 4, src: 'images/New images/56E8A5A7-64F3-46CA-B829-A80F99ED6322_1_105_c.jpg', clue: 'Hidden in plain sight on the street.', lat: centerLat + randomOffset(), lng: centerLng + randomOffset() },
+        { id: 5, src: 'images/New images/7816E4AA-10FC-4F86-8926-08147357BF7A_1_105_c.jpg', clue: 'A bold mark of urban creativity.', lat: centerLat + randomOffset(), lng: centerLng + randomOffset() },
+        { id: 6, src: 'images/New images/A0173217-A2FA-44E0-AC23-103CBBEAE41A_1_105_c.jpg', clue: 'A splash of color on a grey wall.', lat: centerLat + randomOffset(), lng: centerLng + randomOffset() },
+        { id: 7, src: 'images/New images/IMG_2203 copy.JPG', clue: 'Detail of layered urban history.', lat: centerLat + randomOffset(), lng: centerLng + randomOffset() },
+        { id: 8, src: 'images/New images/IMG_22031 copy.JPG', clue: 'Find the hidden geometry in the city.', lat: centerLat + randomOffset(), lng: centerLng + randomOffset() },
+        { id: 9, src: 'images/New images/IMG_3136 copy.JPG', clue: 'A weathered corner of Denmark Street.', lat: centerLat + randomOffset(), lng: centerLng + randomOffset() },
+        { id: 10, src: 'images/New images/IMG_3140.jpg', clue: 'Look for this architectural imprint.', lat: centerLat + randomOffset(), lng: centerLng + randomOffset() },
+        { id: 11, src: 'images/New images/IMG_3143.jpg', clue: 'A forgotten mark in the alley.', lat: centerLat + randomOffset(), lng: centerLng + randomOffset() },
+        { id: 12, src: 'images/New images/IMG_3144.jpg', clue: 'A texture that tells a story.', lat: centerLat + randomOffset(), lng: centerLng + randomOffset() },
+        { id: 13, src: 'images/New images/IMG_3152.jpg', clue: 'Find the balance in this urban shot.', lat: centerLat + randomOffset(), lng: centerLng + randomOffset() },
+        { id: 14, src: 'images/New images/IMG_3156.jpg', clue: 'A striking pattern on the pavement.', lat: centerLat + randomOffset(), lng: centerLng + randomOffset() },
+        { id: 15, src: 'images/New images/IMG_3157.jpg', clue: 'Layered advertisements from another time.', lat: centerLat + randomOffset(), lng: centerLng + randomOffset() },
+        { id: 16, src: 'images/New images/IMG_3162.jpg', clue: 'Look for this graphic urban detail.', lat: centerLat + randomOffset(), lng: centerLng + randomOffset() },
+        { id: 17, src: 'images/New images/IMG_3168.jpg', clue: 'Find the tag hidden behind the sign.', lat: centerLat + randomOffset(), lng: centerLng + randomOffset() },
+        { id: 18, src: 'images/New images/IMG_3169.jpg', clue: 'A macro view of the city’s bones.', lat: centerLat + randomOffset(), lng: centerLng + randomOffset() },
+        { id: 19, src: 'images/New images/IMG_3172.jpg', clue: 'Look for the bright slash of paint.', lat: centerLat + randomOffset(), lng: centerLng + randomOffset() },
+        { id: 20, src: 'images/New images/IMG_3176.jpg', clue: 'Faded posters overlapping in the alley.', lat: centerLat + randomOffset(), lng: centerLng + randomOffset() },
+        { id: 21, src: 'images/New images/IMG_3181.jpg', clue: 'Architecture meets urban art.', lat: centerLat + randomOffset(), lng: centerLng + randomOffset() },
+        { id: 22, src: 'images/New images/IMG_3182.jpg', clue: 'A hidden texture on the wall.', lat: centerLat + randomOffset(), lng: centerLng + randomOffset() },
+        { id: 23, src: 'images/New images/IMG_3183.jpg', clue: 'Look for the bold pattern below.', lat: centerLat + randomOffset(), lng: centerLng + randomOffset() },
+        { id: 24, src: 'images/New images/IMG_3187.jpg', clue: 'A final mark of urban creativity.', lat: centerLat + randomOffset(), lng: centerLng + randomOffset() },
+        { id: 25, src: 'images/New images/IMG_3189.jpg', clue: 'Find the contrast between textures.', lat: centerLat + randomOffset(), lng: centerLng + randomOffset() },
+        { id: 26, src: 'images/New images/IMG_3191.jpg', clue: 'A bold urban statement.', lat: centerLat + randomOffset(), lng: centerLng + randomOffset() },
+        { id: 27, src: 'images/New images/IMG_3195.jpg', clue: 'Look for the layered mark.', lat: centerLat + randomOffset(), lng: centerLng + randomOffset() },
+        { id: 28, src: 'images/New images/IMG_3199.jpg', clue: 'A forgotten detail of the street.', lat: centerLat + randomOffset(), lng: centerLng + randomOffset() },
+        { id: 29, src: 'images/New images/IMG_3200.jpg', clue: 'Urban geometry at its finest.', lat: centerLat + randomOffset(), lng: centerLng + randomOffset() },
+        { id: 30, src: 'images/New images/IMG_3201.jpg', clue: 'Find the hidden slash of color.', lat: centerLat + randomOffset(), lng: centerLng + randomOffset() },
+        { id: 31, src: 'images/New images/IMG_3208.jpg', clue: 'A micro shot of weathered stone.', lat: centerLat + randomOffset(), lng: centerLng + randomOffset() },
+        { id: 32, src: 'images/New images/IMG_3209.jpg', clue: 'Look for the stencil in the shadows.', lat: centerLat + randomOffset(), lng: centerLng + randomOffset() },
+        { id: 33, src: 'images/New images/IMG_3210.jpg', clue: 'Layered textures of the Outernet.', lat: centerLat + randomOffset(), lng: centerLng + randomOffset() },
+        { id: 34, src: 'images/New images/IMG_3212.jpg', clue: 'A forgotten urban signature.', lat: centerLat + randomOffset(), lng: centerLng + randomOffset() },
+        { id: 35, src: 'images/New images/IMG_3221.jpg', clue: 'Look for the patterned imprint.', lat: centerLat + randomOffset(), lng: centerLng + randomOffset() },
+        { id: 36, src: 'images/New images/IMG_3222.jpg', clue: 'Find the macro detail on the pillar.', lat: centerLat + randomOffset(), lng: centerLng + randomOffset() },
+        { id: 37, src: 'images/New images/IMG_3223.jpg', clue: 'A bold slash on a textured wall.', lat: centerLat + randomOffset(), lng: centerLng + randomOffset() },
+        { id: 38, src: 'images/New images/IMG_3225.jpg', clue: 'Look for the graphic mark.', lat: centerLat + randomOffset(), lng: centerLng + randomOffset() },
+        { id: 39, src: 'images/New images/IMG_3232.jpg', clue: 'A final piece of the urban puzzle.', lat: centerLat + randomOffset(), lng: centerLng + randomOffset() },
+        { id: 40, src: 'images/New images/IMG_3239 (1).jpg', clue: 'Look closely at the layered textures.', lat: centerLat + randomOffset(), lng: centerLng + randomOffset() }
     ];
 
     // State
@@ -72,14 +97,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // Navigation Logic
     btnGrid.addEventListener('click', () => {
         btnGrid.classList.add('active');
+        btnGrid.setAttribute('aria-pressed', 'true');
         btnMap.classList.remove('active');
+        btnMap.setAttribute('aria-pressed', 'false');
         viewGrid.classList.add('active-view');
         viewMap.classList.remove('active-view');
     });
 
     btnMap.addEventListener('click', () => {
         btnMap.classList.add('active');
+        btnMap.setAttribute('aria-pressed', 'true');
         btnGrid.classList.remove('active');
+        btnGrid.setAttribute('aria-pressed', 'false');
         viewMap.classList.add('active-view');
         viewGrid.classList.remove('active-view');
 
@@ -235,6 +264,12 @@ document.addEventListener('DOMContentLoaded', () => {
         progressText.textContent = `${foundFragments.length} / ${TOTAL_FRAGMENTS}`;
         const percentage = (foundFragments.length / TOTAL_FRAGMENTS) * 100;
         progressFill.style.width = `${percentage}%`;
+        
+        // Update ARIA progress
+        const progressBar = document.getElementById('progress-container');
+        if (progressBar) {
+            progressBar.setAttribute('aria-valuenow', foundFragments.length);
+        }
     }
 
     // Modal & Distance Logic
@@ -277,6 +312,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function openModal(fragment, numStr) {
+        // Reset all overlays first to prevent ghost states
+        scanningOverlay.classList.add('hidden');
+        successOverlay.classList.add('hidden');
+        errorOverlay.classList.add('hidden');
+
         activeFragment = fragment;
         modalImage.src = fragment.src;
         modalTitle.textContent = `Fragment #${numStr}`;
@@ -297,6 +337,11 @@ document.addEventListener('DOMContentLoaded', () => {
         activeFragment = null;
         cameraInput.value = ''; // Reset input
         
+        // Force hide all overlays
+        scanningOverlay.classList.add('hidden');
+        successOverlay.classList.add('hidden');
+        errorOverlay.classList.add('hidden');
+
         // Clear all themes
         for (let i = 1; i <= 8; i++) {
             modalContent.classList.remove(`theme-${i}`);
