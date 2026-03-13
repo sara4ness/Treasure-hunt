@@ -6,11 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Imprints | Scavenger Hunt</title>
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-
     <!-- Leaflet CSS for Maps -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
@@ -24,7 +19,9 @@
 
         <!-- Toggle map/grid -->
         <nav class="top-nav">
-            <h1>Imprints</h1>
+            <div class="logo-container">
+                <img src="images/IMPRINTS Logo.svg" alt="Imprints Project" class="main-logo">
+            </div>
             <div class="nav-toggles">
                 <button id="btn-grid" class="nav-btn active">Gallery</button>
                 <button id="btn-map" class="nav-btn">Map</button>
@@ -34,8 +31,7 @@
         <!-- Main Gallery Grid View -->
         <main class="view-container active-view" id="view-grid">
             <header class="header">
-                <p>Find the hidden creativity embedded in Tottenham Court Road. Use the map to locate a fragment, then
-                    capture it here.</p>
+                <p>Ready to hunt? Find the playful layers of creativity hidden around the Outernet! Use the map to track down a fragment, then capture its vibe.</p>
             </header>
             <div class="grid-container" id="fragment-grid">
                 <!-- Fragments injected via JS -->
@@ -71,12 +67,14 @@
 
             <!-- Scanning Overlay -->
             <div class="scanning-overlay hidden" id="scanning-overlay">
+                <div class="scanning-ring"></div>
                 <div class="scanner-line"></div>
-                <div class="scanning-text">Analyzing Imprint & Location...</div>
+                <div class="scanning-text">SCANNIG FOR IMPRINTS...</div>
             </div>
 
             <!-- Success Overlay -->
             <div class="success-overlay hidden" id="success-overlay">
+                <div class="success-glow"></div>
                 <div class="success-icon">&#10003;</div>
                 <div class="success-text">Imprint Found!</div>
                 <p>You have uncovered a layer of the city's creativity.</p>
@@ -102,11 +100,6 @@
                 <div class="progress-fill" id="progress-fill"></div>
             </div>
 
-            <!-- DEBUG TOGGLE (Remove before production) -->
-            <div class="debug-panel">
-                <label>
-                    <input type="checkbox" id="debug-location" checked> Debug: Ignore GPS Distance
-                </label>
             </div>
         </div>
     </div>

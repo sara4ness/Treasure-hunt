@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const fragments = [
         { id: 1, src: 'images/IMG_2203.jpg', clue: 'Look closely at the layered brickwork.', lat: 51.51532, lng: -0.12946 },
         { id: 2, src: 'images/IMG_2208.jpg', clue: 'Weathered words painted on stone.', lat: 51.51506, lng: -0.12881 },
-        { id: 3, src: 'images/IMG_2214.jpg', clue: 'A vibrant burst of street art.', lat: 51.51455, lng: -0.12965 },
+        { id: 3, src: 'images/IMG_3187.jpg', clue: 'A bold slash of colorful paint.', lat: 51.51455, lng: -0.12965 },
         { id: 4, src: 'images/IMG_2224.jpg', clue: 'Distressed posters overlapping in time.', lat: 51.51576, lng: -0.13055 },
         { id: 5, src: 'images/IMG_2239 2.jpg', clue: 'A hidden mark in the alleyway.', lat: 51.51578, lng: -0.13029 },
         { id: 6, src: 'images/IMG_2240 2.jpg', clue: 'A small tag on a rusted surface.', lat: centerLat + randomOffset(), lng: centerLng + randomOffset() }, // Missing coords, using random
@@ -67,8 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnMap = document.getElementById('btn-map');
     const viewGrid = document.getElementById('view-grid');
     const viewMap = document.getElementById('view-map');
-
-    const debugToggle = document.getElementById('debug-location');
 
     // Navigation Logic
     btnGrid.addEventListener('click', () => {
@@ -238,9 +236,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Modal & Distance Logic
     function checkDistance(fragment) {
-        if (debugToggle.checked) {
-            // Debug mode allows capturing from anywhere
-            enableCapture("Debug Mode Active");
+        if (true) { // Always allow capture for exhibition testing
+            enableCapture("");
             return;
         }
 

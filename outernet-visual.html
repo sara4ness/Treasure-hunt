@@ -34,7 +34,7 @@
             z-index: 1;
         }
 
-        /* Removed high-contrast filters to match the clean look of the app */
+        /* No filters applied - pure CartoDB Dark Matter map */
         .leaflet-tile-pane {
             filter: none;
         }
@@ -176,15 +176,15 @@
             doubleClickZoom: false
         }).setView([centerLat, centerLng], 17); // Zoomed in close to Outernet
 
-        // Tile Layers (Switched to CartoDB Light NoLabels - grayscale and avoids 401 Auth errors more reliably)
+        // Tile Layers (Reverted to original setup)
         const lightModeUrl = 'https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png';
         const darkModeUrl = 'https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png';
 
         // Add Attribution
         const cartoAttribution = '&copy; <a href="https://carto.com/attributions">CARTO</a>';
 
-        let currentLayer = L.tileLayer(lightModeUrl, { maxZoom: 20, attribution: cartoAttribution }).addTo(map);
-        let isDarkMode = false;
+        let currentLayer = L.tileLayer(darkModeUrl, { maxZoom: 20, attribution: cartoAttribution }).addTo(map);
+        let isDarkMode = true; // Set to Dark Mode initially
         let pointsVisible = true;
 
         const mapContainer = document.getElementById('map-container');
