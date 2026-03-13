@@ -275,11 +275,15 @@ h3,
 .custom-div-icon {
     background: transparent;
     border: none;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    overflow: visible !important;
 }
 
 .marker-star {
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
     transition: all var(--transition-smooth);
     display: flex;
     align-items: center;

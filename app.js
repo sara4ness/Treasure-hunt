@@ -147,8 +147,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 html: `<div class="marker-star ${isFound ? 'found-star' : ''}">
                         <img src="images/star.png" alt="Star Marker">
                        </div>`,
-                iconSize: [32, 32],
-                iconAnchor: [16, 16]
+                iconSize: [50, 50],
+                iconAnchor: [25, 25]
             });
 
             const marker = L.marker([fragment.lat, fragment.lng], { icon: customIcon }).addTo(map);
