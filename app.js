@@ -43,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // DOM Elements
     const gridContainer = document.getElementById('fragment-grid');
     const modal = document.getElementById('capture-modal');
+    const modalContent = modal.querySelector('.modal-content');
     const closeModalBtn = document.getElementById('close-modal');
     const modalImage = document.getElementById('modal-image');
     const modalTitle = document.getElementById('modal-title');
@@ -279,6 +280,10 @@ document.addEventListener('DOMContentLoaded', () => {
         modalTitle.textContent = `Fragment #${numStr}`;
         modalInstruction.textContent = fragment.clue;
 
+        // Apply dynamic theme based on fragment ID (or index)
+        const themeIndex = (fragments.indexOf(fragment) % 8) + 1;
+        modalContent.classList.add(`theme-${themeIndex}`);
+
         // Initial distance check
         checkDistance(fragment);
 
@@ -289,6 +294,11 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.classList.add('hidden');
         activeFragment = null;
         cameraInput.value = ''; // Reset input
+        
+        // Clear all themes
+        for (let i = 1; i <= 8; i++) {
+            modalContent.classList.remove(`theme-${i}`);
+        }
     }
 
     closeModalBtn.addEventListener('click', closeModal);
